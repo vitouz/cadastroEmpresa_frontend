@@ -25,7 +25,6 @@ function App() {
   const getEmpresas = async () => {
     try {
       const ref = await axios.get("http://localhost:8800");
-      // setEmpresas(ref.data.sort((a, b) => (a.nome > b.nome ? 1 : -1))); //apenas para retornar em orderm alfabetica
       setEmpresas(ref.data);
     } catch (error) {
       toast.error(error);

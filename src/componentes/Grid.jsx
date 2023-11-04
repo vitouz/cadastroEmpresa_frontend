@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import axios from "axios";
+import { useState } from "react";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
+import TelefoneMask from "./Mascaras/TelefoneMask";
+import InputMask from "react-input-mask";
 
 const Tabela = styled.table`
   width: 100%;
@@ -9,7 +12,7 @@ const Tabela = styled.table`
   padding: 20px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
-  max-width: 1000px;
+  max-width: 100%;
   margin: 20px auto;
 `;
 
@@ -25,6 +28,14 @@ export const Tbody = styled.tbody``;
 
 export const Td = styled.td`
   padding-top: 15px;
+`;
+
+const Input = styled(InputMask)`
+  width: 300px;
+  padding: 0 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 40px;
 `;
 
 const Grid = ({ empresas, setEmpresas, setOnEdit }) => {
@@ -46,45 +57,66 @@ const Grid = ({ empresas, setEmpresas, setOnEdit }) => {
     setOnEdit(null);
   };
 
+  const [cnpjBusca, setCnpjBusca] = useState("");
+
+  const empresasFiltradas = empresas.filter((empresa) => {
+    return empresa.cnpj_empresa.includes(cnpjBusca);
+  });
+
+  const handleBuscarCnpj = async () => {
+    if (!cnpjBusca) {
+      return;
+    }
+    try {
+      const response = await axios.get(
+        `http://localhost:8800/buscarEmpresa/${cnpjBusca}`
+      );
+      setEmpresas(response.data);
+    } catch (error) {
+      console.error("Erro na busca por CNPJ:", error);
+    }
+  };
+
   return (
-    <Tabela>
-      <Thead>
-        <Tr>
-          <Th>Nome</Th>
-          {/* <Th>Senha</Th> */}
-          <Th>Nome Empresa</Th>
-          <Th>CNPJ</Th>
-          {/* <Th>Cep</Th> */}
-          {/* <Th>Endereco</Th> */}
-          {/* <Th>Numero</Th> */}
-          <Th>Telefone</Th>
-          <Th>Email</Th>
-          <Th></Th>
-          <Th></Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {empresas.map((item, index) => (
-          <Tr key={index}>
-            <Td>{item.nome_cliente}</Td>
-            {/* <Td>{item.senha}</Td> */}
-            <Td>{item.nome_empresa}</Td>
-            <Td>{item.cnpj_empresa}</Td>
-            {/* <Td>{item.cep_empresa}</Td> */}
-            {/* <Td>{item.endereco}</Td> */}
-            {/* <Td>{item.numero}</Td> */}
-            <Td>{item.telefone}</Td>
-            <Td>{item.email}</Td>
-            <Td width="5%">
-              <FaEdit onClick={() => editarEmpresasCadastradas(item)} />
-            </Td>
-            <Td width="5%">
-              <FaTrash onClick={() => deletarEmpresasCadastradas(item.id)} />
-            </Td>
+    <>
+      <Input
+        type="text"
+        placeholder="Pesquisar por CNPJ..."
+        value={cnpjBusca}
+        onChange={(e) => setCnpjBusca(e.target.value)}
+      />
+
+      <Tabela>
+        <Thead>
+          <Tr>
+            <Th>Nome</Th>
+            <Th>Nome Empresa</Th>
+            <Th>CNPJ</Th>
+            <Th>Telefone</Th>
+            <Th>Email</Th>
+            <Th></Th>
+            <Th></Th>
           </Tr>
-        ))}
-      </Tbody>
-    </Tabela>
+        </Thead>
+        <Tbody>
+          {empresasFiltradas.map((item, index) => (
+            <Tr key={index}>
+              <Td>{item.nome_cliente}</Td>
+              <Td>{item.nome_empresa}</Td>
+              <Td>{item.cnpj_empresa}</Td>
+              <Td>{TelefoneMask(item.telefone)}</Td>
+              <Td>{item.email}</Td>
+              <Td width="5%">
+                <FaEdit onClick={() => editarEmpresasCadastradas(item)} />
+              </Td>
+              <Td width="5%">
+                <FaTrash onClick={() => deletarEmpresasCadastradas(item.id)} />
+              </Td>
+            </Tr>
+          ))}
+        </Tbody>
+      </Tabela>
+    </>
   );
 };
 

@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import InputMask from "react-input-mask";
 
+// STYLES *******************************
 const FormContainer = styled.form`
   display: inline-flex;
   justify-content: center;
@@ -15,12 +17,20 @@ const FormContainer = styled.form`
   border-radius: 5px;
 `;
 
-const InputArea = styled.div`
+export const InputArea = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 const Input = styled.input`
+  width: 300px;
+  padding: 0 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 40px;
+`;
+
+export const StyledInputMask = styled(InputMask)`
   width: 300px;
   padding: 0 10px;
   border: 1px solid #bbb;
@@ -39,6 +49,8 @@ const Button = styled.button`
   color: white;
   height: 42px;
 `;
+
+//STYLES ******************
 
 const Form = ({ getEmpresas, onEdit, setOnEdit }) => {
   const ref = useRef();
@@ -92,7 +104,7 @@ const Form = ({ getEmpresas, onEdit, setOnEdit }) => {
         })
         .then(({ data }) => {
           toast.success(data);
-          window.location.reload(false);
+          // window.location.reload(false);
         })
         .catch(({ data }) => toast.error(data));
     } else {
@@ -113,48 +125,51 @@ const Form = ({ getEmpresas, onEdit, setOnEdit }) => {
     }
     setOnEdit(null);
     getEmpresas();
+    console.log(empresa.cnpj_empresa.value);
   };
 
   return (
-    <FormContainer ref={ref} onSubmit={enviarSubmit}>
-      <InputArea>
-        <Label>Nome</Label>
-        <Input name="nome_cliente" />
-      </InputArea>
-      <InputArea>
-        <Label>Senha</Label>
-        <Input name="senha" />
-      </InputArea>
-      <InputArea>
-        <Label>Nome Empresa</Label>
-        <Input name="nome_empresa" />
-      </InputArea>
-      <InputArea>
-        <Label>CNPJ</Label>
-        <Input name="cnpj_empresa" />
-      </InputArea>
-      <InputArea>
-        <Label>CEP</Label>
-        <Input name="cep_empresa" />
-      </InputArea>
-      <InputArea>
-        <Label>Endereco</Label>
-        <Input name="endereco" />
-      </InputArea>
-      <InputArea>
-        <Label>Numero</Label>
-        <Input name="numero" />
-      </InputArea>
-      <InputArea>
-        <Label>Telefone</Label>
-        <Input name="telefone" />
-      </InputArea>
-      <InputArea>
-        <Label>Email</Label>
-        <Input name="email" />
-      </InputArea>
-      <Button type="submit">Salvar</Button>
-    </FormContainer>
+    <>
+      <FormContainer ref={ref} onSubmit={enviarSubmit}>
+        <InputArea>
+          <Label>Nome</Label>
+          <Input name="nome_cliente" />
+        </InputArea>
+        <InputArea>
+          <Label>Senha</Label>
+          <Input name="senha" />
+        </InputArea>
+        <InputArea>
+          <Label>Nome Empresa</Label>
+          <Input name="nome_empresa" />
+        </InputArea>
+        <InputArea>
+          <Label>CNPJ</Label>
+          <StyledInputMask mask="99.999.999/9999-99" name="cnpj_empresa" />
+        </InputArea>
+        <InputArea>
+          <Label>CEP</Label>
+          <StyledInputMask mask="99999-999" name="cep_empresa" />
+        </InputArea>
+        <InputArea>
+          <Label>Endereco</Label>
+          <Input name="endereco" />
+        </InputArea>
+        <InputArea>
+          <Label>Numero</Label>
+          <Input name="numero" />
+        </InputArea>
+        <InputArea>
+          <Label>Telefone</Label>
+          <StyledInputMask mask="(99) 99999-9999" name="telefone" />
+        </InputArea>
+        <InputArea>
+          <Label>Email</Label>
+          <Input name="email" />
+        </InputArea>
+        <Button type="submit">Salvar</Button>
+      </FormContainer>
+    </>
   );
 };
 
