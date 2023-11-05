@@ -1,6 +1,6 @@
 # Cadastro de empresas
 
-##Resumo do projeto
+#Resumo do projeto
 Uma aplicacao full-stack, tendo o seu Back-end construido em NodeJS e o Front-end construido em ReactJS, para banco de dados onde sera armazenado as informacoes das empresas, foi utilizado MySql.
 
 A aplicacao permite cadastrar uma empresa e armazenar suas infomacoes fixamente num banco de dados.
