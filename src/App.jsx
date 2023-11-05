@@ -1,22 +1,17 @@
-import { toast, ToastContainer } from "react-toastify";
-import styled from "styled-components";
-import Form from "./componentes/Form";
-import Grid from "./componentes/Grid";
+// React
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+
+// Styles
+import { Container, Title } from "./App.styled.jsx";
+
+//Corpo da Aplicacao
+import Form from "./componentes/Form/Form";
+import Grid from "./componentes/Grid/Grid";
+
+// API
 import axios from "axios";
-
-const Container = styled.div`
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-`;
-
-const Title = styled.h2``;
 
 function App() {
   const [empresas, setEmpresas] = useState([]);
