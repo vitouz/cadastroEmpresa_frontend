@@ -20,7 +20,14 @@ Basta digitar o CNPJ da empresa que deseja filtrar, que sera retornado as inform
 
 
 ## Para a Construção do Back-end foi utilizado:
-- 
+- Express. para facilitar a criação de servidores web e o gerenciamento de rotas e solicitações HTTP.
+- Cors. Permite criar solicitações HTTP de origens diferentes, tornando mais flexível o acesso a recursos da web.
+
+## Para a criacao do Front-end foi utilizado: 
+- Styled Components. Para estilizar os componentes
+- Axios. Para conectar com a API.
+- React Icons. Utilizado para tornar a experiencia com o usuario mais agradavel e facilitar no entendimento das determinadas acoes
+- React Mask. Para criar mascaras de CNPJ e CEP, para formatar da maneira correta os dados na hora do preenchimento.
 
 # Como Criar uma Tabela
 
