@@ -9,6 +9,14 @@ Para isso, basta preencher todos os campos solicitados no formulario, assim como
 Basta clicar em salvar para gerar um novo cadastro.
 
 Apos o cadastro, ela aparecera logo abaixo do formulario:
+![image](https://github.com/vitouz/cadastroEmpresa_frontend/assets/112439603/a191e9ae-26e7-4f0e-971e-b8a1d00bee89)
+
+Pode ser feito tambem, a atualizacao dos dados ou exclusao clicando nos botoes(Lapis e Lixeira) logo apos as infomacoes da empresa.
+
+Alem dessas funcionalidades, com o cadastro de varias empresas pode acabar ficando dificil encontrar uma empresa especifica, entao para auxiliar na pesquisa, foi adicionado um espaco para pesquisar uma empresa pelo seu CNPJ
+
+Basta digitar o CNPJ da empresa que deseja filtrar, que sera retornado as informacoes:
+![image](https://github.com/vitouz/cadastroEmpresa_frontend/assets/112439603/669dd135-b738-472b-bb95-d8be162c2599)
 
 
 ## Para a Construção do Back-end foi utilizado:
