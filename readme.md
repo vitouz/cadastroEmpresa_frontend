@@ -1,11 +1,18 @@
-# React + Vite
+# Cadastro de empresas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##Resumo do projeto
+Uma aplicacao full-stack, tendo o seu Back-end construido em NodeJS e o Front-end construido em ReactJS, para banco de dados onde sera armazenado as informacoes das empresas, foi utilizado MySql.
 
-Currently, two official plugins are available:
+A aplicacao permite cadastrar uma empresa e armazenar suas infomacoes fixamente num banco de dados.
+Para isso, basta preencher todos os campos solicitados no formulario, assim como no exemplo abaixo: 
+![image](https://github.com/vitouz/cadastroEmpresa_frontend/assets/112439603/808c1528-154b-412c-b76b-19cf20c1bcfd)
+Basta clicar em salvar para gerar um novo cadastro.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Apos o cadastro, ela aparecera logo abaixo do formulario:
+
+
+## Para a Construção do Back-end foi utilizado:
+- 
 
 # Como Criar uma Tabela
 
