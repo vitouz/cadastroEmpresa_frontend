@@ -1,33 +1,31 @@
 # Cadastro de empresas
 
 ## Resumo do projeto
-Uma aplicacao full-stack, tendo o seu Back-end construido em NodeJS e o Front-end construido em ReactJS, para banco de dados onde sera armazenado as informacoes das empresas, foi utilizado MySql.
+Uma aplicação full-stack, com o backend construído em Node.js e o frontend construído em React.js, armazena informações de empresas em um banco de dados MySQL.
 
-A aplicacao permite cadastrar uma empresa e armazenar suas infomacoes fixamente num banco de dados.
-Para isso, basta preencher todos os campos solicitados no formulario, assim como no exemplo abaixo: 
+A aplicação permite o cadastro de empresas, que são armazenadas no banco de dados. Para isso, basta preencher todos os campos solicitados no formulário, como exemplificado abaixo:
 ![image](https://github.com/vitouz/cadastroEmpresa_frontend/assets/112439603/808c1528-154b-412c-b76b-19cf20c1bcfd)
-Basta clicar em salvar para gerar um novo cadastro.
+Após preencher os campos, basta clicar em "Salvar" para criar um novo cadastro.
 
-Apos o cadastro, ela aparecera logo abaixo do formulario:
+Após o cadastro, as informações da empresa são exibidas abaixo do formulário:
 ![image](https://github.com/vitouz/cadastroEmpresa_frontend/assets/112439603/a191e9ae-26e7-4f0e-971e-b8a1d00bee89)
 
-Pode ser feito tambem, a atualizacao dos dados ou exclusao clicando nos botoes(Lapis e Lixeira) logo apos as infomacoes da empresa.
+Você também pode atualizar ou excluir os dados da empresa clicando nos botões (Lápis e Lixeira) após as informações da empresa.
 
-Alem dessas funcionalidades, com o cadastro de varias empresas pode acabar ficando dificil encontrar uma empresa especifica, entao para auxiliar na pesquisa, foi adicionado um espaco para pesquisar uma empresa pelo seu CNPJ
-
-Basta digitar o CNPJ da empresa que deseja filtrar, que sera retornado as informacoes:
+Para facilitar a pesquisa de empresas, foi adicionado um campo de pesquisa, onde é possível buscar uma empresa pelo seu CNPJ, como mostrado na imagem abaixo:
 ![image](https://github.com/vitouz/cadastroEmpresa_frontend/assets/112439603/669dd135-b738-472b-bb95-d8be162c2599)
 
-
 ## Para a Construção do Back-end foi utilizado:
-- Express. para facilitar a criação de servidores web e o gerenciamento de rotas e solicitações HTTP.
-- Cors. Permite criar solicitações HTTP de origens diferentes, tornando mais flexível o acesso a recursos da web.
+- Express: para facilitar a criação de servidores web e o gerenciamento de rotas e solicitações HTTP.
+- Cors: permite criar solicitações HTTP de origens diferentes, tornando mais flexível o acesso a recursos da web.
 
 ## Para a criacao do Front-end foi utilizado: 
-- Styled Components. Para estilizar os componentes
-- Axios. Para conectar com a API.
-- React Icons. Utilizado para tornar a experiencia com o usuario mais agradavel e facilitar no entendimento das determinadas acoes
-- React Mask. Para criar mascaras de CNPJ e CEP, para formatar da maneira correta os dados na hora do preenchimento.
+- Styled Components: para estilizar os componentes.
+- Axios: para conectar com a API.
+- React Icons: utilizado para melhorar a experiência do usuário e facilitar o entendimento das ações.
+- React Mask: para criar máscaras de CNPJ e CEP, formatando corretamente os dados durante o preenchimento.
+
+A tabela necessária para o projeto está disponível abaixo para que possa ser criada no banco de dados e dar início à aplicação.
 
 # Como Criar uma Tabela
 
@@ -46,7 +44,7 @@ CREATE TABLE empresas (
     );
 ```
 
-Caso Queira deletar sua tabela
+Caso queira deletar sua tabela
 
 ```sql
 DROP TABLE empresas;
